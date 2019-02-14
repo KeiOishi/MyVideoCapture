@@ -7,7 +7,7 @@ WebCameraの映像をOpenCVのcv::Matで扱える．<br>
 また，WebCameraの使えるモード（解像度など，使うWebカメラにより異なる）
 を選択することが出来る．
 
-##使い方
+## 使い方
 
 ```c++:main.cpp
 int main()
