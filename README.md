@@ -20,7 +20,7 @@ int main()
 
     while(1){
         cv::Mat frame;
-        webcam.GetImage(&frame);
+        webcam.GetImage(&frame); //画像の読み込み
         if (frame.empty()){
             break;
         }
