@@ -132,10 +132,19 @@ void DirectShowVideoCapture::Release()
 
 bool DirectShowVideoCapture::GrabImage(cv::Mat *cvImage)
 {
-	if (EWC_GetImage(cameraID_, buffer_.get()) != 0) {
-		std::cerr << "cannot getImage\n";
-		return false;
-	}
+//	if (EWC_GetImage(cameraID_, buffer_.get()) != 0) {
+//		std::cerr << "cannot getImage\n";
+//		return false;
+//	}
+    while(1) {
+        if (EWC_IsCaptured(cameraID_)){
+            if (EWC_GetImage(cameraID_, buffer_.get()) != 0) {
+                std::cerr << "cannot getImage\n";
+                return false;
+            }
+            break;
+        }
+    }
 
 	cv::Mat tmp(height_, width_, CV_8UC3);
 	memcpy(tmp.data, buffer_.get(), width_ * height_ * 3);
